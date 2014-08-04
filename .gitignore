@@ -2,3 +2,9 @@
 /dcu_xe4/*.dcu
 /package_delphi/*.identcache
 /package_delphi/*.res
+*.res
+*.identcache
+*.dcu
+*.dproj
+*.dproj.local
+*.exe
