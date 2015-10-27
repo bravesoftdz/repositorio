@@ -61,10 +61,10 @@ end;
 function TDataLog.getLogFileName(logDate: TDateTime = -1): string;
 begin
   if logDate = -1 then
-    logDate := date;
+    logDate := now;
   if not(DirectoryExists(baseDir)) then
     CreateDir(baseDir);
-  result := baseDir + FormatDateTime('yyyy_mm_dd', logDate) + '.log';
+  result := baseDir + FormatDateTime('yyyy_mm_dd_hh_mm_ss', logDate) + '.log';
 end;
 
 procedure TDataLog.pause;
@@ -96,7 +96,7 @@ end;
 procedure TDataLog.DataModuleCreate(Sender: TObject);
 begin
   baseDir := getWindowsTempPath;
-  paused := true;
+//  paused := true;
 end;
 
 procedure TDataLog.newLine;
