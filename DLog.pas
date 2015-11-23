@@ -3,7 +3,7 @@ unit DLog;
 interface
 
 uses
-  SysUtils, Classes, Windows, acStrUtils, acSysUtils;
+  SysUtils, Classes, Windows, acStrUtils, acSysUtils, forms;
 
 type
   TDataLog = class(TDataModule)
@@ -95,7 +95,7 @@ end;
 
 procedure TDataLog.DataModuleCreate(Sender: TObject);
 begin
-  baseDir := getWindowsTempPath;
+  baseDir := ExtractFileDir(Application.ExeName); //getWindowsTempPath;
 //  paused := true;
 end;
 
