@@ -1,8 +1,7 @@
 object DataLog: TDataLog
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Left = 192
-  Top = 131
+  OnDestroy = DataModuleDestroy
   Height = 150
   Width = 215
 end

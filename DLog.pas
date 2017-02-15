@@ -8,14 +8,18 @@ uses
 type
   TDataLog = class(TDataModule)
     procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     logFile: TextFile;
     FbaseDir: string;
+    FLogPrefix: string;
     procedure openLogFile;
     procedure SetbaseDir(const Value: string);
+    procedure SetLogPrefix(const Value: string);
   public
     paused: boolean;
     property baseDir: string read FbaseDir write SetbaseDir;
+    property LogPrefix: string read FLogPrefix write SetLogPrefix;
     function getLogFileName(logDate: TDateTime = -1): string;
     procedure log(mensagem: string; classe: string = ''; newLine: boolean = true);
     procedure step(text: string = '.');
@@ -34,11 +38,27 @@ implementation
 
 { TDataLog }
 
+procedure TDataLog.DataModuleCreate(Sender: TObject);
+begin
+  paused := False;
+  FBaseDir := EmptyStr;
+  FLogPrefix := EmptyStr;
+end;
+
+procedure TDataLog.DataModuleDestroy(Sender: TObject);
+begin
+  CloseFile(LogFile);
+end;
+
+
 procedure TDataLog.log(mensagem: string; classe: string = ''; newLine: boolean = true);
 var
   linha: string;
 begin
   if paused then exit;
+  if FBaseDir = EmptyStr then
+    BaseDir := getWindowsTempPath;
+
   linha := '[' + FormatDateTime('yyyy-dd-mm hh:nn:ss,zzz', now) + ']';
   if classe <> '' then
     linha := linha + '[' + classe + ']';
@@ -64,7 +84,7 @@ begin
     logDate := date;
   if not(DirectoryExists(baseDir)) then
     CreateDir(baseDir);
-  result := baseDir + FormatDateTime('yyyy_mm_dd', logDate) + '.log';
+  result := baseDir + FLogPrefix + FormatDateTime('yyyy_mm_dd', logDate) + '.log';
 end;
 
 procedure TDataLog.pause;
@@ -93,12 +113,6 @@ begin
     Rewrite(logFile);
 end;
 
-procedure TDataLog.DataModuleCreate(Sender: TObject);
-begin
-  baseDir := getWindowsTempPath;
-  paused := true;
-end;
-
 procedure TDataLog.newLine;
 begin
   Writeln(logFile, '.');
@@ -109,6 +123,11 @@ procedure TDataLog.SetbaseDir(const Value: string);
 begin
   FbaseDir := EnsureTrailingSlash(Value);
   resume;
+end;
+
+procedure TDataLog.SetLogPrefix(const Value: string);
+begin
+  FLogPrefix := Value;
 end;
 
 initialization
