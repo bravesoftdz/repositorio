@@ -47,7 +47,8 @@ end;
 
 procedure TDataLog.DataModuleDestroy(Sender: TObject);
 begin
-  CloseFile(LogFile);
+  if not Paused then
+    Self.pause;
 end;
 
 
