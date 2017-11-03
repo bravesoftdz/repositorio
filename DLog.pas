@@ -65,12 +65,17 @@ begin
     linha := linha + '[' + classe + ']';
   linha := linha + ' ' + mensagem;
   EnterCriticalSection(CritSectLog);
-  if newLine then
-    Writeln(logFile, linha)
-  else
-    Write(logFile, linha);
-  Flush(logFile);
-  LeaveCriticalSection(CritSectLog);
+  try
+    if newLine then
+      Writeln(logFile, linha)
+    else
+      Write(logFile, linha);
+
+  finally
+    Flush(logFile);
+    LeaveCriticalSection(CritSectLog);
+  end;
+
 end;
 
 procedure TDataLog.step(text: string = '.');
