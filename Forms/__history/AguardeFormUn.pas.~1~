@@ -24,7 +24,6 @@ type
       width:integer = 0; mostrarProgress: boolean = false);
     property aviso: string read getAviso write setAviso;
     procedure esconder;
-    procedure step;
   end;
 
 var
@@ -84,17 +83,13 @@ begin
   ProgressBar.Position := value;
   if total <> 0 then
     self.caption := 'Aguarde... ('+ formatFloat('0.00%',(value/total)*100) +')';
+  Application.ProcessMessages;
 end; //TAguardeForm.Setcurrent
 
 procedure TAguardeForm.Settotal(const Value: integer);
 begin
   Ftotal := Value;
   ProgressBar.Max := value;
-end;
-
-procedure TAguardeForm.step;
-begin
-  Setcurrent(current + 1);
 end;
 
 function TAguardeForm.getAviso: string;
@@ -105,6 +100,7 @@ end;
 procedure TAguardeForm.setAviso(aviso: string);
 begin
   lblAviso.Caption := aviso;
+  Application.ProcessMessages;
 end;
 
 

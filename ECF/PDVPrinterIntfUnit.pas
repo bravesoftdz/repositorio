@@ -25,8 +25,8 @@ type
     procedure AbrirDia;
     procedure FecharDia;
     procedure EfetuarReducaoZ(DateTime: TDateTime = 0);
-    function Sangria(Valor: Currency): Integer;
-    function Suprimento(Valor: Currency; FormaPagamento: String): Integer;
+    procedure Sangria(Valor: Currency);
+    procedure Suprimento(Valor: Currency; FormaPagamento: AnsiString);
 
     procedure ImprimirConfiguracoes;
     function FlagsFiscais: TFlagsFiscais; 
@@ -36,7 +36,7 @@ type
 
     procedure ProgramarAliquotaICMS(Aliquota: Currency);
     function GetAliquotaList: IAliquotaList;
-    function getNumSerie: string;
+    function getNumSerie: AnsiString;
 
     function dataHoraImpressora: TDateTime;
     function dataUltimoMovimento: TDateTime;
@@ -46,16 +46,17 @@ type
 
     function SubTotal: double;
     procedure LeituraXSerial;
-    function VersaoFirmware: string;
-    function VersaoFirmwareMFD: string;
-    procedure CGC_IE(var CGC, IE: String);
+    function VersaoFirmware: AnsiString;
+    function VersaoFirmwareMFD: AnsiString;
+    procedure CGC_IE(var CGC, IE: AnsiString);
     function GrandeTotal: Double;
-    procedure DataHoraGravacaoUsuarioSWBasicoMFAdicional(var DataHoraUsuario, DataHoraSWBasico, MFAdicional: string);
+    procedure DataHoraGravacaoUsuarioSWBasicoMFAdicional(var DataHoraUsuario, DataHoraSWBasico, MFAdicional: AnsiString);
 
     function DataHoraUltimoDocumentoMFD: TDateTime;
     function ContadorRelatoriosGerenciaisMFD: integer;
     function NumeroOperacoesNaoFiscais: integer;
     function ContadorComprovantesCreditoMFD: integer;
+    function UltimoItemVendido: integer;
 
 
     // Esse método será usado apenas internamente pelo controller, mas é muito conveniente para

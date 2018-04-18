@@ -3,105 +3,105 @@ unit BematechPrinterUnit;
 interface
 
 uses
-  SysUtils, BematechIntfUnit, PDVIntfUnit, PDVPrinterIntfUnit, Dialogs;
+  SysUtils, BematechIntfUnit, PDVIntfUnit, PDVPrinterIntfUnit, Dialogs, System.UITypes;
 
 type
   TModoReducaoZ = (tmrzManual, tmrzAutomatica);
   TInfoReducaoZRaw = record
-    modo: string;
-    contReinicioOperacao: string;
-    contReducaoZ: string;
-    contOrdemOperacao: string;
-    contGeralOperacoesNaoFiscais: string;
-    contCupomFiscal: string;
-    contGeralRelatoriosGerenciais: string;
-    contFitaDetalheEmitida: string;
-    contOperacoesNaoFiscaisCanceladas: string;
-    contCupomFiscalCancelados: string;
-    contOperacaoesNaoFiscais: string;
-    contEspecificosRelatoriosGerenciais: string;
-    contComprovanteDebitoCredito: string;
-    contComprovanteDebitoCreditoNaoEmitido: string;
-    contComprovanteDebitoCreditoCancelados: string;
-    totalizadorGeral: string;
-    totalizadoresParciaisTributados: string;
-    totalizadorIsencaoICMS: string;
-    totalizadoresNaoIncidenciaICMS: string;
-    totalizadorSubstituicaoTributariaICMS: string;
-    totalizadorIsencaoISSQN: string;
-    totalizadorNaoIncidenciaISSQN: string;
-    totalizadorSubstituicaotributariaISSQN: string;
-    totalizadorDescontosICMS: string;
-    totalizadorDescontosISSQN: string;
-    totalizadorAcrescimosICMS: string;
-    totalizadorAcrescimosISSQN: string;
-    totalizadorCancelamentosICMS: string;
-    totalizadorCancelamentosISSQN: string;
-    totalizadoresParceiaisNaoSujeitosICMS: string;
-    totalizadorSangria: string;
-    totalizadorSuprimento: string;
-    totalizadorCancelamentosNaoFiscais: string;
-    totalizadorDescontosNaoFiscais: string;
-    totalizadorAcrescimosNaoFiscais: string;
-    aliquotasTributarias: string;
-    dataMovimento: string;
+    modo: AnsiString;
+    contReinicioOperacao: AnsiString;
+    contReducaoZ: AnsiString;
+    contOrdemOperacao: AnsiString;
+    contGeralOperacoesNaoFiscais: AnsiString;
+    contCupomFiscal: AnsiString;
+    contGeralRelatoriosGerenciais: AnsiString;
+    contFitaDetalheEmitida: AnsiString;
+    contOperacoesNaoFiscaisCanceladas: AnsiString;
+    contCupomFiscalCancelados: AnsiString;
+    contOperacaoesNaoFiscais: AnsiString;
+    contEspecificosRelatoriosGerenciais: AnsiString;
+    contComprovanteDebitoCredito: AnsiString;
+    contComprovanteDebitoCreditoNaoEmitido: AnsiString;
+    contComprovanteDebitoCreditoCancelados: AnsiString;
+    totalizadorGeral: AnsiString;
+    totalizadoresParciaisTributados: AnsiString;
+    totalizadorIsencaoICMS: AnsiString;
+    totalizadoresNaoIncidenciaICMS: AnsiString;
+    totalizadorSubstituicaoTributariaICMS: AnsiString;
+    totalizadorIsencaoISSQN: AnsiString;
+    totalizadorNaoIncidenciaISSQN: AnsiString;
+    totalizadorSubstituicaotributariaISSQN: AnsiString;
+    totalizadorDescontosICMS: AnsiString;
+    totalizadorDescontosISSQN: AnsiString;
+    totalizadorAcrescimosICMS: AnsiString;
+    totalizadorAcrescimosISSQN: AnsiString;
+    totalizadorCancelamentosICMS: AnsiString;
+    totalizadorCancelamentosISSQN: AnsiString;
+    totalizadoresParceiaisNaoSujeitosICMS: AnsiString;
+    totalizadorSangria: AnsiString;
+    totalizadorSuprimento: AnsiString;
+    totalizadorCancelamentosNaoFiscais: AnsiString;
+    totalizadorDescontosNaoFiscais: AnsiString;
+    totalizadorAcrescimosNaoFiscais: AnsiString;
+    aliquotasTributarias: AnsiString;
+    dataMovimento: AnsiString;
   end;
 
   TInfoReducaoZ = record
-    modo: string;
+    modo: AnsiString;
     dataMovimento: TDateTime;
     dataHoraReducao: TDateTime;
-    contReinicioOperacao: string;
-    contReducaoZ: string;
-    contOrdemOperacao: string;
-    contGeralOperacoesNaoFiscais: string;
-    contCupomFiscal: string;
-    contGeralRelatoriosGerenciais: string;
-    contFitaDetalheEmitida: string;
-    contOperacoesNaoFiscaisCanceladas: string;
-    contCupomFiscalCancelados: string;
-    contOperacaoesNaoFiscais: string;
-    contEspecificosRelatoriosGerenciais: string;
-    contComprovanteDebitoCredito: string;
-    contComprovanteDebitoCreditoNaoEmitido: string;
-    contComprovanteDebitoCreditoCancelados: string;
-    totalizadorGeral: string;
-    totalizadoresParciaisTributados: string;
-    totalizadorIsencaoICMS: string;
-    totalizadoresNaoIncidenciaICMS: string;
-    totalizadorSubstituicaoTributariaICMS: string;
-    totalizadorIsencaoISSQN: string;
-    totalizadorNaoIncidenciaISSQN: string;
-    totalizadorSubstituicaotributariaISSQN: string;
-    totalizadorDescontosICMS: string;
-    totalizadorDescontosISSQN: string;
-    totalizadorAcrescimosICMS: string;
-    totalizadorAcrescimosISSQN: string;
-    totalizadorCancelamentosICMS: string;
-    totalizadorCancelamentosISSQN: string;
-    totalizadoresParceiaisNaoSujeitosICMS: string;
-    totalizadorSangria: string;
-    totalizadorSuprimento: string;
-    totalizadorCancelamentosNaoFiscais: string;
-    totalizadorDescontosNaoFiscais: string;
-    totalizadorAcrescimosNaoFiscais: string;
-    aliquotasTributarias: string;
+    contReinicioOperacao: AnsiString;
+    contReducaoZ: AnsiString;
+    contOrdemOperacao: AnsiString;
+    contGeralOperacoesNaoFiscais: AnsiString;
+    contCupomFiscal: AnsiString;
+    contGeralRelatoriosGerenciais: AnsiString;
+    contFitaDetalheEmitida: AnsiString;
+    contOperacoesNaoFiscaisCanceladas: AnsiString;
+    contCupomFiscalCancelados: AnsiString;
+    contOperacaoesNaoFiscais: AnsiString;
+    contEspecificosRelatoriosGerenciais: AnsiString;
+    contComprovanteDebitoCredito: AnsiString;
+    contComprovanteDebitoCreditoNaoEmitido: AnsiString;
+    contComprovanteDebitoCreditoCancelados: AnsiString;
+    totalizadorGeral: AnsiString;
+    totalizadoresParciaisTributados: AnsiString;
+    totalizadorIsencaoICMS: AnsiString;
+    totalizadoresNaoIncidenciaICMS: AnsiString;
+    totalizadorSubstituicaoTributariaICMS: AnsiString;
+    totalizadorIsencaoISSQN: AnsiString;
+    totalizadorNaoIncidenciaISSQN: AnsiString;
+    totalizadorSubstituicaotributariaISSQN: AnsiString;
+    totalizadorDescontosICMS: AnsiString;
+    totalizadorDescontosISSQN: AnsiString;
+    totalizadorAcrescimosICMS: AnsiString;
+    totalizadorAcrescimosISSQN: AnsiString;
+    totalizadorCancelamentosICMS: AnsiString;
+    totalizadorCancelamentosISSQN: AnsiString;
+    totalizadoresParceiaisNaoSujeitosICMS: AnsiString;
+    totalizadorSangria: AnsiString;
+    totalizadorSuprimento: AnsiString;
+    totalizadorCancelamentosNaoFiscais: AnsiString;
+    totalizadorDescontosNaoFiscais: AnsiString;
+    totalizadorAcrescimosNaoFiscais: AnsiString;
+    aliquotasTributarias: AnsiString;
   end;
 
   EBematechPrinter = class(Exception)
   end;
 
-  TBematechPrinter = class(TInterfacedObject, IPDV, IPDVPrinter)
+  TBematechPrinter = class(TInterfacedObject, IPDVPrinter)
   private
     FBematech: IBematech;
-    function GetMessageFromRetVal(RetVal: Integer): string;
-    function GetMessageFromAckByte(Ack: Integer): string;
-    function GetMessageFromStatusBytes(St1, St2, st3: Integer): string;
+    function GetMessageFromRetVal(RetVal: Integer): AnsiString;
+    function GetMessageFromAckByte(Ack: Integer): AnsiString;
+    function GetMessageFromStatusBytes(St1, St2, st3: Integer): AnsiString;
   public
-    erros, alertas: string;
+    erros, alertas: AnsiString;
     constructor Create(const ABematech: IBematech);
 
-    function mensagemUltimoErro: string;
+    function mensagemUltimoErro: AnsiString;
 
     { IPDVPrinter }
     procedure AbrirDia;
@@ -123,60 +123,59 @@ type
     function FlagsFiscais: TFlagsFiscais;
     procedure AbrePortaSerial;
 
-    function getNumSerie: string;
-
+    function getNumSerie: AnsiString;
+    function UltimoItemVendido: integer;
 
     { IPDV }
     function CriarOperacao(VendedorId, ClienteId,
         TipoOperacaoId: Integer;
-        const NomeCliente, Documento, Endereco: string): IPDVTransactionState;
-    function CancelarOperacao(const OperacaoPDV: IOperacaoPDV): IPDVTransactionState;
-
+        const NomeCliente, Documento, Endereco: AnsiString): IPDVTransactionState;
+    procedure CancelarOperacao(const OperacaoPDV: IOperacaoPDV);
     function IniciarFechamento(const OperacaoPDV: IOperacaoPDV; ValorDesconto,
         PorcentualDesconto: Currency; const NomeSupervisor,
-        SenhaSupervisor: string): IPDVTransactionState;
-    procedure EfetuarPagamento(forma: string; valor: currency);
-    function TerminarFechamento(const OperacaoPDV: IOperacaoPDV; mensagem: string = ''): IPDVTransactionState;
+        SenhaSupervisor: AnsiString): IPDVTransactionState;
+    procedure EfetuarPagamento(forma: String; valor: currency);
+    procedure TerminarFechamento(const OperacaoPDV: IOperacaoPDV; mensagem: AnsiString = '');
 
-    function InserirItem(const OperacaoPDV: IOperacaoPDV; MercadoriaId: Integer;
-        const Codigo, Descricao, Unidade, tipoTributacao: string; AliquotaICMS, Quantidade, PrecoUnitario,
-        Desconto: Currency): IPDVTransactionState;
+    procedure InserirItem(const OperacaoPDV: IOperacaoPDV; MercadoriaId: Integer;
+        const Codigo, Descricao, Unidade, tipoTributacao: AnsiString; AliquotaICMS, Quantidade, PrecoUnitario,
+        Desconto: Currency);
     function RemoverItem(const Item: IItemPDV; const NomeSupervisor,
-        SenhaSupervisor: string): IPDVTransactionState;
+        SenhaSupervisor: AnsiString): IPDVTransactionState;
     function RemoverItemPeloNumero(numero: integer): IPDVTransactionState;
     function numeroUltimoCupom: integer;
 
     procedure LeituraMemoriaFiscalData(dtInicial, dtFinal: TDateTime);
     function DadosUltimaReducaoMFD: TInfoReducaoZRaw;
-    function LeituraMemoriaFiscalDataMFD(DataInicial, DataFinal: TDateTime;
-      FlagLeitura: string): Integer;
-    function LeituraMemoriaFiscalReducaoMFD(ReducaoInicial, ReducaoFinal: integer;
-      FlagLeitura: string): Integer;
-    function LeituraMemoriaFiscalSerialDataMFD(DataInicial, DataFinal: TDateTime;
-      FlagLeitura: string): Integer;
-    function LeituraMemoriaFiscalSerialDataPAFECF(DataInicial, DataFinal: TDateTime;
-      FlagLeitura: string): Integer;
-    function LeituraMemoriaFiscalSerialReducaoMFD(ReducaoInicial, ReducaoFinal: integer;
-      FlagLeitura: string): Integer;
-    function LeituraMemoriaFiscalSerialReducaoPAFECF(ReducaoInicial, ReducaoFinal: integer;
-      FlagLeitura: string): Integer;
-    function ArquivoMFD(ArquivoOrigem, DadoInicial, DadoFinal, TipoDownload, Usuario: String;
-      TipoGeracao, UnicoArquivo: integer): integer;
-    function EspelhoMFD(NomeArquivo, DataOuCOOInicial,
-      DataOuCOOFinal,  TipoDownload, Usuario: string): integer;
-    function DownloadMF( Arquivo: String ): Integer;
-    function DownloadMFD( Arquivo: String; TipoDownload: String; ParametroInicial: String; ParametroFinal: String; UsuarioECF: String ): Integer;
-    function FormatoDadosMFD( ArquivoOrigem: String; ArquivoDestino: String; TipoFormato: String; TipoDownload: String; ParametroInicial: String; ParametroFinal: String; UsuarioECF: String ): Integer;
+    procedure LeituraMemoriaFiscalDataMFD(DataInicial, DataFinal: TDateTime;
+      FlagLeitura: AnsiString);
+    procedure LeituraMemoriaFiscalReducaoMFD(ReducaoInicial, ReducaoFinal: integer;
+      FlagLeitura: AnsiString);
+    procedure LeituraMemoriaFiscalSerialDataMFD(DataInicial, DataFinal: TDateTime;
+      FlagLeitura: AnsiString);
+    procedure LeituraMemoriaFiscalSerialDataPAFECF(DataInicial, DataFinal: TDateTime;
+      FlagLeitura: AnsiString);
+    procedure LeituraMemoriaFiscalSerialReducaoMFD(ReducaoInicial, ReducaoFinal: integer;
+      FlagLeitura: AnsiString);
+    procedure LeituraMemoriaFiscalSerialReducaoPAFECF(ReducaoInicial, ReducaoFinal: integer;
+      FlagLeitura: AnsiString);
+    procedure ArquivoMFD(ArquivoOrigem, DadoInicial, DadoFinal, TipoDownload, Usuario: AnsiString;
+      TipoGeracao, UnicoArquivo: integer);
+    procedure EspelhoMFD(NomeArquivo, DataOuCOOInicial,
+      DataOuCOOFinal,  TipoDownload, Usuario: AnsiString);
+    procedure DownloadMF( Arquivo: AnsiString );
+    procedure DownloadMFD( Arquivo: AnsiString; TipoDownload: AnsiString; ParametroInicial: AnsiString; ParametroFinal: AnsiString; UsuarioECF: AnsiString );
+    procedure FormatoDadosMFD( ArquivoOrigem: AnsiString; ArquivoDestino: AnsiString; TipoFormato: AnsiString; TipoDownload: AnsiString; ParametroInicial: AnsiString; ParametroFinal: AnsiString; UsuarioECF: AnsiString );
     function dataHoraImpressora: TDateTime;
     function SubTotal: double;
     procedure LeituraXSerial;
-    function VersaoFirmware: string;
-    function VersaoFirmwareMFD: string;
-    procedure CGC_IE(var CGC, IE: String);
+    function VersaoFirmware: AnsiString;
+    function VersaoFirmwareMFD: AnsiString;
+    procedure CGC_IE(var CGC, IE: AnsiString);
     function GrandeTotal: Double;
-    procedure DataHoraGravacaoUsuarioSWBasicoMFAdicional(var DataHoraUsuario, DataHoraSWBasico, MFAdicional: string);
-    function Sangria(Valor: Currency): Integer;
-    function Suprimento(Valor: Currency; FormaPagamento: String): Integer;
+    procedure DataHoraGravacaoUsuarioSWBasicoMFAdicional(var DataHoraUsuario, DataHoraSWBasico, MFAdicional: AnsiString);
+    procedure Sangria(Valor: Currency);
+    procedure Suprimento(Valor: Currency; FormaPagamento: AnsiString);
     function DataHoraUltimoDocumentoMFD: TDateTime;
     function ContadorRelatoriosGerenciaisMFD: integer;
     function ContadorCupomFiscalMFD: integer;
@@ -191,9 +190,9 @@ type
   private
     FCount: Integer;
     FItems: array of Currency;
-    function GetStr(const SourceStr: string; var State: Integer; out Dest: string): Boolean;
+    function GetStr(const SourceStr: AnsiString; var State: Integer; out Dest: AnsiString): Boolean;
   public
-    constructor Create(const AliquotaListStr: string);
+    constructor Create(const AliquotaListStr: AnsiString);
 
     { IAliquotaList }
     function Count: Integer;
@@ -204,10 +203,10 @@ implementation
 
 uses
   StrUtils, Classes, DateUtils, {DConfigGeral, DConfigSistema,}
-  acBematechUtils, statusUnit, sglConsts;
+  acBematechUtils, statusUnit, sglConsts, BematechUtils;
 
 const
-  MsgSt1: array[0..7] of string = (
+  MsgSt1: array[0..7] of AnsiString = (
     'Número de parâmetro de CMD inválido',
     'Cupom fiscal aberto',
     'Comando inexistente',
@@ -217,7 +216,7 @@ const
     'Pouco papel',
     'Fim do papel');
 
-  MsgSt2: array[0..7] of string = (
+  MsgSt2: array[0..7] of AnsiString = (
     'Comando não executado',
     'CNPJ/IE do proprietário não programados',
     'Cancelamento não permitido',
@@ -233,15 +232,14 @@ const
 procedure TBematechPrinter.AbrirDia;
 var
   Valor,
-  FormaPagamento: string;
+  FormaPagamento: AnsiString;
 begin
   Valor := '0';
   FormaPagamento := '';
   CheckStatus(FBematech.AberturaDoDia(Valor, FormaPagamento));
 end;
 
-function TBematechPrinter.CancelarOperacao(
-  const OperacaoPDV: IOperacaoPDV): IPDVTransactionState;
+procedure TBematechPrinter.CancelarOperacao(const OperacaoPDV: IOperacaoPDV);
 begin
   CheckStatus(FBematech.CancelaCupom);
 end;
@@ -275,7 +273,7 @@ begin
         erros := erros + GetMessageFromStatusBytes(St1, St2, st3);
   end;
   if erros <> '' then
-    raise exception.Create(erros);
+    raise exception.Create(String(erros));
 end;
 
 constructor TBematechPrinter.Create(const ABematech: IBematech);
@@ -284,32 +282,27 @@ begin
 end;
 
 function TBematechPrinter.CriarOperacao(VendedorId, ClienteId,
-  TipoOperacaoId: Integer; const NomeCliente, Documento, Endereco: string): IPDVTransactionState;
+  TipoOperacaoId: Integer; const NomeCliente, Documento, Endereco: AnsiString): IPDVTransactionState;
 begin
   CheckStatus(FBematech.AbreCupomMFD(Documento, NomeCliente, Endereco));
 end;
 
-procedure TBematechPrinter.EfetuarPagamento(forma: string; valor: currency);
+procedure TBematechPrinter.EfetuarPagamento(forma: String; valor: currency);
 begin
   CheckStatus(
-    FBematech.EfetuaFormaPagamento(forma, PChar(formatFloat(',0.00', valor))));
+    FBematech.EfetuaFormaPagamento(AnsiString(forma), AnsiString(formatFloat(',0.00', valor))));
 end;
-
-//procedure TBematechPrinter.AbreComprovanteNaoFiscalVinculado((forma: string; valor: currency);
-//begin
-//  CheckStatus(FBematech.EfetuaFormaPagamento(forma, PChar(formatFloat(',0.00', valor))));
-//end;
 
 procedure TBematechPrinter.EfetuarReducaoZ(DateTime: TDateTime);
 var
-  StrData, StrHora: string;
+  StrData, StrHora: AnsiString;
   FormatSettings: TFormatSettings;
 begin
-  GetLocaleFormatSettings(1033, FormatSettings);
+  FormatSettings := TFormatSettings.create(1033);
   if DateTime = 0 then
     DateTime := Now;
-  StrData := FormatDateTime('dd/mm/yyyy', DateTime, FormatSettings);
-  StrHora := FormatDateTime('hh:nn:ss', DateTime, FormatSettings);
+  StrData := AnsiString(FormatDateTime('dd/mm/yyyy', DateTime, FormatSettings));
+  StrHora := AnsiString(FormatDateTime('hh:nn:ss', DateTime, FormatSettings));
   CheckStatus(FBematech.ReducaoZ(StrData, StrHora));
 end;
 
@@ -325,22 +318,22 @@ end;
 
 function TBematechPrinter.GetAliquotaList: IAliquotaList;
 var
-  s: string;
+  s: AnsiString;
 begin
   SetLength(s, 79);
   CheckStatus(FBematech.RetornoAliquotas(s));
   Result := TBematechAliquotaList.Create(s);
 end;
 
-function TBematechPrinter.GetMessageFromAckByte(Ack: Integer): string;
+function TBematechPrinter.GetMessageFromAckByte(Ack: Integer): AnsiString;
 begin
   if Ack = 6 then
     Result := 'Função recebida corretamente'
   else
-    Result := Format('Função não executada (ack = %d)', [Ack]);
+    Result := AnsiString(Format('Função não executada (ack = %d)', [Ack]));
 end;
 
-function TBematechPrinter.GetMessageFromRetVal(RetVal: Integer): string;
+function TBematechPrinter.GetMessageFromRetVal(RetVal: Integer): AnsiString;
 begin
   case RetVal of
     0:
@@ -364,13 +357,13 @@ begin
     -30:
       Result := 'Função não compatível com a impressora YANCO';
     else
-      Result := Format('Erro %d (sem mensagem)', [RetVal]);
+      Result := AnsiString(Format('Erro %d (sem mensagem)', [RetVal]));
   end;
 end;
 
 function TBematechPrinter.GetMessageFromStatusBytes(St1,
-  St2, st3: Integer): string;
-  function GetMessagesFromSingleByte(St: Integer; MsgList: array of string): string;
+  St2, st3: Integer): AnsiString;
+  function GetMessagesFromSingleByte(St: Integer; MsgList: array of AnsiString): AnsiString;
   var
     i: Integer;
   begin
@@ -398,9 +391,9 @@ end;
 
 function TBematechPrinter.IniciarFechamento(
   const OperacaoPDV: IOperacaoPDV; ValorDesconto, PorcentualDesconto: Currency;
-  const NomeSupervisor, SenhaSupervisor: string): IPDVTransactionState;
+  const NomeSupervisor, SenhaSupervisor: AnsiString): IPDVTransactionState;
 var
-  Sinal: string;
+  Sinal: AnsiString;
 begin
   if ValorDesconto < 0 then
   begin
@@ -410,15 +403,15 @@ begin
   else
     Sinal := 'D';
 
-  CheckStatus(FBematech.IniciaFechamentoCupom(Sinal, '$', Format('%.2f', [ValorDesconto])));
+  CheckStatus(FBematech.IniciaFechamentoCupom(Sinal, AnsiString('$'), AnsiString(Format('%.2f', [ValorDesconto]))));
 end;
 
-function TBematechPrinter.InserirItem(const OperacaoPDV: IOperacaoPDV;
-  MercadoriaId: Integer; const Codigo, Descricao, Unidade, tipoTributacao: string;
+procedure TBematechPrinter.InserirItem(const OperacaoPDV: IOperacaoPDV;
+  MercadoriaId: Integer; const Codigo, Descricao, Unidade, tipoTributacao: AnsiString;
   AliquotaICMS, Quantidade, PrecoUnitario,
-  Desconto: Currency): IPDVTransactionState;
+  Desconto: Currency);
 var
-  DescImpressao, strAliquota: string;
+  DescImpressao, strAliquota: AnsiString;
   Acrescimo: Currency;
 begin
   Acrescimo := 0;
@@ -430,22 +423,28 @@ begin
     Desconto := 0;
   end;
   
-  strAliquota := 'NN';
+  strAliquota := AnsiString('NN');
 
   if tipoTributacao = 'I' then
-    strAliquota := 'II';
+    strAliquota := AnsiString('II');
   if tipoTributacao = 'N' then
-    strAliquota := 'NN';
+    strAliquota := AnsiString('NN');
   if tipoTributacao = 'F' then
-    strAliquota := 'FF';
+    strAliquota := AnsiString('FF');
   if tipoTributacao = 'T' then
-    strAliquota := FormatFloat('0000', AliquotaICMS * 100);
+    strAliquota := AnsiString(FormatFloat('0000', AliquotaICMS * 100));
 
   CheckStatus(
-      FBematech.VendeItemDepartamento(Codigo, DescImpressao,
-          PChar(strAliquota), Format('%.3f', [PrecoUnitario]),
-          Format('%.3f', [Quantidade]), Format('%.2f', [Acrescimo]),
-          Format('%.2f', [Desconto]), '00', Copy(Unidade, 1, 2)));
+      FBematech.VendeItemDepartamento(
+        Codigo,
+        DescImpressao,
+        strAliquota,
+        AnsiString(Format('%.3f', [PrecoUnitario])),
+        AnsiString(Format('%.3f', [Quantidade])),
+        AnsiString(Format('%.2f', [Acrescimo])),
+        AnsiString(Format('%.2f', [Desconto])),
+        AnsiString('00'),
+        AnsiString(Copy(Unidade, 1, 2))));
 end;
 
 function TBematechPrinter.IsAtiva: Boolean;
@@ -464,38 +463,46 @@ end;
 
 procedure TBematechPrinter.ProgramarAliquotaICMS(Aliquota: Currency);
 var
-  AliquotaStr: string;
+  AliquotaStr: AnsiString;
 begin
-  AliquotaStr := StringReplace(Format('%5.2f', [Aliquota]), ' ', '0', [rfReplaceAll]);
+  AliquotaStr := AnsiString(StringReplace(Format('%5.2f', [Aliquota]), ' ', '0', [rfReplaceAll]));
   CheckStatus(FBematech.ProgramaAliquota(AliquotaStr, 0));
 end;
 
 function TBematechPrinter.RemoverItem(const Item: IItemPDV;
-  const NomeSupervisor, SenhaSupervisor: string): IPDVTransactionState;
+  const NomeSupervisor, SenhaSupervisor: AnsiString): IPDVTransactionState;
 begin
-  CheckStatus(FBematech.CancelaItemGenerico(IntToStr(Item.Index)));
+  CheckStatus(FBematech.CancelaItemGenerico(AnsiString(IntToStr(Item.Index))));
 end;
 
 function TBematechPrinter.RemoverItemPeloNumero(numero: integer): IPDVTransactionState;
 begin
-  CheckStatus(FBematech.CancelaItemGenerico(IntToStr(numero)));
+  CheckStatus(FBematech.CancelaItemGenerico(AnsiString(IntToStr(numero))));
 end;
 
-function TBematechPrinter.TerminarFechamento(
-  const OperacaoPDV: IOperacaoPDV; mensagem: string = ''): IPDVTransactionState;
+procedure TBematechPrinter.TerminarFechamento(
+  const OperacaoPDV: IOperacaoPDV; mensagem: AnsiString = '');
 begin
-  CheckStatus(FBematech.TerminaFechamentoCupom(PChar(mensagem)));
+  CheckStatus(FBematech.TerminaFechamentoCupom(mensagem));
+end;
+
+function TBematechPrinter.UltimoItemVendido: integer;
+var
+  d: integer;
+begin
+  CheckStatus(FBematech.UltimoItemVendido(d));
+  result := d;
 end;
 
 function TBematechPrinter.VerifyDataUltimaReducaoZ(
   out DateTime: TDateTime): Boolean;
-  procedure DecodeStr(const S: string; out I1, I2, I3: Integer);
+  procedure DecodeStr(const S: AnsiString; out I1, I2, I3: Integer);
   var
     j: Integer;
     Values: array [0..2] of Integer;
   begin
     for j := 0 to 2 do
-      Values[j] := StrToInt(Copy(S, j * 2 + 1, 2));
+      Values[j] := StrToInt(Copy(String(S), j * 2 + 1, 2));
 
     I1 := Values[0];
     I2 := Values[1];
@@ -503,7 +510,7 @@ function TBematechPrinter.VerifyDataUltimaReducaoZ(
   end;
 var
   Data,
-  Hora: string;
+  Hora: AnsiString;
   Year, Month, Day, Hour, Minute, Second: Integer;
 begin
   SetLength(Data, 6);
@@ -539,9 +546,9 @@ begin
   CheckStatus(FBematech.AbrePortaSerial);
 end;
 
-function TBematechPrinter.getNumSerie: string;
+function TBematechPrinter.getNumSerie: AnsiString;
 var
-  num: string;
+  num: AnsiString;
 begin
   SetLength(num, 20);
   checkStatus(FBematech.numeroSerie(num));
@@ -550,18 +557,18 @@ end;
 
 function TBematechPrinter.numeroUltimoCupom: integer;
 var
-  num: string;
+  num: AnsiString;
 begin
   SetLength(num, 6);
   checkStatus(FBematech.numeroCupom(num));
-  result := strToInt(num);
+  result := strToInt(String(num));
 end;
 
 procedure TBematechPrinter.LeituraMemoriaFiscalData(dtInicial,
   dtFinal: TDateTime);
 begin
-  checkStatus(FBematech.LeituraMemoriaFiscalData(FormatDateTime('ddmmyy', dtInicial),
-    FormatDateTime('ddmmyy', dtFinal)));
+  checkStatus(FBematech.LeituraMemoriaFiscalData(AnsiString(FormatDateTime('ddmmyy', dtInicial)),
+    AnsiString(FormatDateTime('ddmmyy', dtFinal))));
 end;
 
 function TBematechPrinter.DadosUltimaReducaoMFD: TInfoReducaoZRaw;
@@ -570,10 +577,11 @@ const
     (2,4,4,6,6,6,6,6,4,4,120,120,4,4,4,18,224,14,14,14,14,14,14,14,14,14,14,14,14,392,14,14,14,14,14,64,6);
 var
   i, posAtual: integer;
-  dadosReducao: string;
-  dadosReducaoArr: array[0..36] of string;
+  dadosReducao: AnsiString;
+  dadosReducaoArr: array[0..36] of AnsiString;
 begin
-  for i := 1 to 1278 do dadosReducao := dadosReducao + ' ';
+  //for i := 1 to 1278 do dadosReducao := dadosReducao + ' ';
+  SetLength(dadosReducao, 1278);
   CheckStatus(FBematech.DadosUltimaReducaoMFD(DadosReducao));
   posAtual := 1;
   for i := low(indices) to high(indices) do
@@ -621,96 +629,97 @@ begin
   result.dataMovimento := dadosReducaoArr[36];
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalDataMFD(DataInicial,
-  DataFinal: TDateTime; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalDataMFD(DataInicial,
+  DataFinal: TDateTime; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalDataMFD(
-    formatDateTime('ddmmyyyy', DataInicial),
-    formatDateTime('ddmmyyyy', DataFinal),
-    PChar(FlagLeitura)
+    AnsiString(formatDateTime('ddmmyyyy', DataInicial)),
+    AnsiString(formatDateTime('ddmmyyyy', DataFinal)),
+    FlagLeitura
   ));
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalSerialDataPAFECF(DataInicial,
-  DataFinal: TDateTime; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalSerialDataPAFECF(DataInicial,
+  DataFinal: TDateTime; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalSerialDataPAFECF(
-    formatDateTime('ddmmyyyy', DataInicial),
-    formatDateTime('ddmmyyyy', DataFinal),
-    PChar(FlagLeitura),
-    PChar(_paf_cpb), PChar(_paf_cpv)
+    AnsiString(formatDateTime('ddmmyyyy', DataInicial)),
+    AnsiString(formatDateTime('ddmmyyyy', DataFinal)),
+    FlagLeitura,
+    _paf_cpb, _paf_cpv
   ));
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalReducaoMFD(ReducaoInicial,
-  ReducaoFinal: integer; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalReducaoMFD(ReducaoInicial,
+  ReducaoFinal: integer; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalReducaoMFD(
-    PChar(intToStr(reducaoInicial)),
-    PChar(intToStr(reducaoFinal)),
-    PChar(FlagLeitura)
+    AnsiString(intToStr(reducaoInicial)),
+    AnsiString(intToStr(reducaoFinal)),
+    FlagLeitura
   ));
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalSerialReducaoPAFECF(
-  ReducaoInicial, ReducaoFinal: integer; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalSerialReducaoPAFECF(
+  ReducaoInicial, ReducaoFinal: integer; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalSerialReducaoPAFECF(
-    intToStr(reducaoInicial),
-    intToStr(reducaoFinal),
-    FlagLeitura, _paf_cpv, _paf_cpb
+    AnsiString(intToStr(reducaoInicial)),
+    AnsiString(intToStr(reducaoFinal)),
+    FlagLeitura,
+    _paf_cpb, _paf_cpv
   ));
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalSerialDataMFD(DataInicial,
-  DataFinal: TDateTime; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalSerialDataMFD(DataInicial,
+  DataFinal: TDateTime; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalDataMFD(
-    formatDateTime('ddmmyyyy', DataInicial),
-    formatDateTime('ddmmyyyy', DataFinal),
-    PChar(FlagLeitura)
+    AnsiString(formatDateTime('ddmmyyyy', DataInicial)),
+    AnsiString(formatDateTime('ddmmyyyy', DataFinal)),
+    FlagLeitura
   ));
 end;
 
-function TBematechPrinter.LeituraMemoriaFiscalSerialReducaoMFD(ReducaoInicial,
-  ReducaoFinal: integer; FlagLeitura: string): Integer;
+procedure TBematechPrinter.LeituraMemoriaFiscalSerialReducaoMFD(ReducaoInicial,
+  ReducaoFinal: integer; FlagLeitura: AnsiString);
 begin
   CheckStatus(FBematech.LeituraMemoriaFiscalSerialReducaoMFD(
-    PChar(intToStr(reducaoInicial)),
-    PChar(intToStr(reducaoFinal)),
-    PChar(FlagLeitura)
+    AnsiString(intToStr(reducaoInicial)),
+    AnsiString(intToStr(reducaoFinal)),
+    FlagLeitura
   ));
 end;
 
-function TBematechPrinter.ArquivoMFD(ArquivoOrigem, DadoInicial, DadoFinal,
-  TipoDownload, Usuario: string; TipoGeracao, UnicoArquivo: integer): integer;
+procedure TBematechPrinter.ArquivoMFD(ArquivoOrigem, DadoInicial, DadoFinal,
+  TipoDownload, Usuario: AnsiString; TipoGeracao, UnicoArquivo: integer);
 begin
   CheckStatus(FBematech.ArquivoMFD(ArquivoOrigem, DadoInicial, DadoFinal,
     TipoDownload, Usuario, TipoGeracao, _paf_cpv, _paf_cpb,
     UnicoArquivo));
 end;
 
-function TBematechPrinter.EspelhoMFD(NomeArquivo, DataOuCOOInicial,
-  DataOuCOOFinal, TipoDownload, Usuario: string): integer;
+procedure TBematechPrinter.EspelhoMFD(NomeArquivo, DataOuCOOInicial,
+  DataOuCOOFinal, TipoDownload, Usuario: AnsiString);
 begin
   CheckStatus(FBematech.EspelhoMFD(NomeArquivo, DataOuCOOInicial, DataOuCOOFinal,
     TipoDownload, Usuario, _paf_cpv, _paf_cpb));
 end;
 
-function TBematechPrinter.DownloadMF(Arquivo: String): Integer;
+procedure TBematechPrinter.DownloadMF(Arquivo: AnsiString);
 begin
   CheckStatus(FBematech.DownloadMF(Arquivo));
 end;
 
-function TBematechPrinter.DownloadMFD(Arquivo, TipoDownload,
-  ParametroInicial, ParametroFinal, UsuarioECF: String): Integer;
+procedure TBematechPrinter.DownloadMFD(Arquivo, TipoDownload,
+  ParametroInicial, ParametroFinal, UsuarioECF: AnsiString);
 begin
   CheckStatus(Fbematech.DownloadMFD(Arquivo, TipoDownload, ParametroInicial, ParametroFinal, UsuarioECF));
 end;
 
-function TBematechPrinter.FormatoDadosMFD(ArquivoOrigem, ArquivoDestino,
+procedure TBematechPrinter.FormatoDadosMFD(ArquivoOrigem, ArquivoDestino,
   TipoFormato, TipoDownload, ParametroInicial, ParametroFinal,
-  UsuarioECF: String): Integer;
+  UsuarioECF: AnsiString);
 begin
   CheckStatus(FBematech.FormatoDadosMFD(ArquivoOrigem, ArquivoDestino, TipoFormato,
     TipoDownload, ParametroInicial, ParametroFinal, UsuarioECF));
@@ -718,30 +727,30 @@ end;
 
 function TBematechPrinter.dataHoraImpressora: TDateTime;
 var
-  d, h: string;
+  d, h: AnsiString;
 begin
   CheckStatus(FBematech.DataHoraImpressora(d, h));
-  result := EncodeDateTime(strToInt('20' + copy(d, 5, 2)),
-                 StrToInt(copy(d, 3, 2)),
-                 StrToInt(copy(d, 1, 2)),
-                 StrToInt(copy(h, 1, 2)),
-                 StrToInt(copy(h, 3, 2)),
-                 StrToInt(copy(h, 5, 2)), 0);
+  result := EncodeDateTime(strToInt('20' + copy(String(d), 5, 2)),
+                 StrToInt(copy(String(d), 3, 2)),
+                 StrToInt(copy(String(d), 1, 2)),
+                 StrToInt(copy(String(h), 1, 2)),
+                 StrToInt(copy(String(h), 3, 2)),
+                 StrToInt(copy(String(h), 5, 2)), 0);
 end;
 
 function TBematechPrinter.GrandeTotal: Double;
 var
-  gt: String;
+  gt: AnsiString;
 begin
   CheckStatus(FBematech.GrandeTotal(gt));
-  result := StrToFloat(gt);
+  result := StrToFloat(String(gt));
   result := Result / 100;
 end;
 
 
-procedure TBematechPrinter.CGC_IE(var CGC, IE: String);
+procedure TBematechPrinter.CGC_IE(var CGC, IE: AnsiString);
 var
-  pCgc, pIE: string;
+  pCgc, pIE: AnsiString;
 begin
   SetLength(pCgc, 18);
   setLength(pIE, 15);
@@ -758,108 +767,108 @@ end;
 
 function TBematechPrinter.SubTotal: double;
 var
-  sub: string;
+  sub: AnsiString;
 begin
   CheckStatus(FBematech.SubTotal(sub));
-  result := StrToFloat(sub);
+  result := StrToFloat(String(sub));
   result := result / 100;
 end;
 
-function TBematechPrinter.VersaoFirmware: string;
+function TBematechPrinter.VersaoFirmware: AnsiString;
 var
-  v: string;
+  v: AnsiString;
 begin
   CheckStatus(FBematech.VersaoFirmware(v));
   result := v;
 end;
 
-function TBematechPrinter.VersaoFirmwareMFD: string;
+function TBematechPrinter.VersaoFirmwareMFD: AnsiString;
 var
-  v: string;
+  v: AnsiString;
 begin
   CheckStatus(FBematech.VersaoFirmwareMFD(v));
   result := v;
 end;
 
 procedure TBematechPrinter.DataHoraGravacaoUsuarioSWBasicoMFAdicional(
-  var DataHoraUsuario, DataHoraSWBasico, MFAdicional: string);
+  var DataHoraUsuario, DataHoraSWBasico, MFAdicional: AnsiString);
 begin
   checkStatus(FBematech.DataHoraGravacaoUsuarioSWBasicoMFAdicional(DataHoraUsuario, DataHoraSWBasico, MFAdicional));
 end;
 
-function TBematechPrinter.Sangria(Valor: Currency): Integer;
+procedure TBematechPrinter.Sangria(Valor: Currency);
 var
-  valorStr: string;
+  valorStr: AnsiString;
 begin
-  valorStr := FormatFloat('000', Valor * 100);
+  valorStr := AnsiString(FormatFloat('000', Valor * 100));
   checkStatus(FBematech.Sangria(valorStr));
 end;
 
-function TBematechPrinter.Suprimento(Valor: Currency;
-  FormaPagamento: String): Integer;
+procedure TBematechPrinter.Suprimento(Valor: Currency;
+  FormaPagamento: AnsiString);
 var
-  valorStr: String;
+  valorStr: AnsiString;
 begin
-  valorStr := FormatFloat('000', Valor * 100);
+  valorStr := AnsiString(FormatFloat('000', Valor * 100));
   CheckStatus(FBematech.Suprimento(valorStr, FormaPagamento));
 end;
 
 function TBematechPrinter.ContadorComprovantesCreditoMFD: integer;
 var
-  r: string;
+  r: AnsiString;
 begin
   CheckStatus(FBematech.ContadorComprovantesCreditoMFD(r));
-  result := StrToInt(r);
+  result := StrToInt(String(r));
 end;
 
 function TBematechPrinter.ContadorRelatoriosGerenciaisMFD: integer;
 var
-  r: string;
+  r: AnsiString;
 begin
   CheckStatus(FBematech.ContadorRelatoriosGerenciaisMFD(r));
-  result := StrToInt(r);
+  result := StrToInt(String(r));
 end;
 
 function TBematechPrinter.ContadorCupomFiscalMFD: integer;
 var
-  r: string;
+  r: AnsiString;
 begin
   CheckStatus(FBematech.ContadorCupomFiscalMFD(r));
-  result := StrToInt(r);
+  result := StrToInt(String(r));
 end;
 
 function TBematechPrinter.DataHoraUltimoDocumentoMFD: TDateTime;
 var
-  r: string;
+  r: AnsiString;
   a, m, d, h, n, s: word;
 begin
   CheckStatus(FBematech.DataHoraUltimoDocumentoMFD(r));
-  a := StrToInt('20' + copy(r, 5, 2));
-  m := StrToInt(copy(r, 3, 2));
-  d := StrToInt(copy(r, 1, 2));
-  h := StrToInt(copy(r, 7, 2));
-  n := StrToInt(copy(r, 9, 2));
-  s := StrToInt(copy(r, 11, 2));
+  a := StrToInt('20' + copy(String(r), 5, 2));
+  m := StrToInt(copy(String(r), 3, 2));
+  d := StrToInt(copy(String(r), 1, 2));
+  h := StrToInt(copy(String(r), 7, 2));
+  n := StrToInt(copy(String(r), 9, 2));
+  s := StrToInt(copy(String(r), 11, 2));
   result := EncodeDateTime(a, m, d, h, n, s, 0);
 end;
 
 function TBematechPrinter.NumeroOperacoesNaoFiscais: integer;
 var
-  r: string;
+  r: AnsiString;
 begin
   CheckStatus(FBematech.NumeroOperacoesNaoFiscais(r));
-  result := StrToInt(r);
+  result := StrToInt(String(r));
 end;
 
 function TBematechPrinter.dataUltimoMovimento: TDateTime;
 var
-  r: string;
+  r: AnsiString;
   a, m, d: word;
 begin
   CheckStatus(FBematech.DataHoraUltimoDocumentoMFD(r));
-  a := StrToInt('20' + copy(r, 5, 2));
-  m := StrToInt(copy(r, 3, 2));
-  d := StrToInt(copy(r, 1, 2));
+  a := StrToInt('20' + copy(String(r), 5, 2));
+  m := StrToInt(copy(String(r), 3, 2));
+  d := StrToInt(copy(String(r), 1, 2));
   result := EncodeDate(a, m, d);
 end;
 
@@ -870,7 +879,7 @@ end;
 
 procedure TBematechPrinter.desabilitaRetornoEstendido;
 var
-  flag: string;
+  flag: AnsiString;
 begin
   flag := '0';
   if FBematech.habilitaDesabilitaRetornoEstendidoMFD(flag) <> 1 then
@@ -879,14 +888,14 @@ end;
 
 procedure TBematechPrinter.habilitaRetornoEstendido;
 var
-  flag: string;
+  flag: AnsiString;
 begin
   flag := '1';
   if FBematech.habilitaDesabilitaRetornoEstendidoMFD(flag) <> 1 then
     MessageDlg('Não foi possível habilitar o retorno estendido da impressora fiscal.'+#13+#10+'Contate o suporte técnico.', mtError, [mbOK], 0);
 end;
 
-function TBematechPrinter.mensagemUltimoErro: string;
+function TBematechPrinter.mensagemUltimoErro: AnsiString;
 begin
   
 end;
@@ -898,11 +907,11 @@ begin
   Result := FCount;
 end;
 
-constructor TBematechAliquotaList.Create(const AliquotaListStr: string);
+constructor TBematechAliquotaList.Create(const AliquotaListStr: AnsiString);
 var
   i: Integer;
   State: Integer;
-  s: string;
+  s: AnsiString;
   Value: Integer;
   LastNonZero: Integer;
 begin
@@ -915,7 +924,7 @@ begin
     if not GetStr(AliquotaListStr, State, s) then
       break;
 
-    if TryStrToInt(s, Value) then
+    if TryStrToInt(String(s), Value) then
     begin
       FItems[i] := Value / 100.0;
       if FItems[i] <> 0 then
@@ -932,8 +941,8 @@ begin
   Result := FItems[Index];
 end;
 
-function TBematechAliquotaList.GetStr(const SourceStr: string;
-  var State: Integer; out Dest: string): Boolean;
+function TBematechAliquotaList.GetStr(const SourceStr: AnsiString;
+  var State: Integer; out Dest: AnsiString): Boolean;
 var
   p, i, Count: Integer;
 begin
@@ -944,7 +953,7 @@ begin
   end;
 
   i := State;
-  p := PosEx(',', SourceStr, State);
+  p := PosEx(',', String(SourceStr), State);
   if p = 0 then
   begin
     Count := Length(SourceStr) + 1 - i;
