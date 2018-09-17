@@ -4,7 +4,7 @@ interface
 
 
 uses
-  classes, StrUtils, SysUtils, ComCTrls;
+  classes, StrUtils, SysUtils, Vcl.ComCTrls;
 
 Type
   TInfoPalavra = class

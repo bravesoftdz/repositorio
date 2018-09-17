@@ -5,7 +5,7 @@ interface
 uses idHTTP, SysUtils, System.Classes, IdSSL, IdIOHandler;
 
 function getRemoteXmlContent(pUrl: string; http: TIdHTTP = nil): String; overload
-function getRemoteXmlContent(const pUrl: string; http: TIdHTTP;var erro: string): String; overload
+function getRemoteXmlContent(const pUrl: string; http: TIdHTTP; var erro: string; aRetornoStream: TStringStream): boolean; overload
 function getHTTPInstance: TidHTTP;
 procedure downloadFile(url, filename: string);
 
@@ -46,15 +46,13 @@ begin
   end;
 end;
 
-function getRemoteXmlContent(const pUrl: string; http: TIdHTTP;var erro: string): String;
+function getRemoteXmlContent(const pUrl: string; http: TIdHTTP; var erro: string; aRetornoStream: TStringStream): boolean;
 var
   criouHTTP: boolean;
-  retornoStream: TStringStream;
 begin
   criouHTTP := False;
-  Result := EmptyStr;
+
   erro := EmptyStr;
-  retornoStream := TStringStream.Create('', TEncoding.UTF8);
   try
     if http = nil then
     begin
@@ -65,17 +63,16 @@ begin
     try
       http.ConnectTimeout := 30000;
       http.ReadTimeOut := 30000;
-      http.Get(pUrl, retornoStream);
+      http.Get(pUrl, aRetornoStream);
     except
       on E: EIdHTTPProtocolException do
         erro := E.ErrorMessage;
     end;
 
-    Result := retornoStream.DataString;
+    Result := erro.IsEmpty;
   finally
     if criouHTTP and (http <> nil) then
       FreeAndNil(http);
-    FreeAndNil(retornoStream);
   end;
 end;
 
