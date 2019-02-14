@@ -398,7 +398,9 @@ begin
   try
     fc := TstringList.Create;
     fc.LoadFromFile(fileName);
+    {$WARNINGS OFF}
     fc.Text := UTF8Encode(fc.Text);
+    {$WARNINGS ON}
     fc.SaveToFile(fileName);
     result := fileName;
   finally
