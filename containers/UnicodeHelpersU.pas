@@ -15,7 +15,7 @@ unit UnicodeHelpersU;
 
 interface
 
-uses CommonTypesU;
+uses CommonTypesU, SysUtils;
 
 function UnicodeUpperCase(const S: UnicodeString): UnicodeString;
   {$IFDEF SUPPORTS_INLINE} inline; {$ENDIF}
@@ -42,7 +42,7 @@ function CharInSet(const Ch: AnsiChar; const aSet: TSysCharset): Boolean;
 
 implementation
 
-uses Windows, SysUtils, Classes;
+uses Windows, Classes;
 
 function UnicodeUpperCase(const S: UnicodeString): UnicodeString;
 begin

@@ -67,6 +67,7 @@ begin
     W[i]:= ((W[i-3] xor W[i-8] xor W[i-14] xor W[i-16]) shl 1) or ((W[i-3] xor W[i-8] xor W[i-14] xor W[i-16]) shr 31);
   A:= CurrentHash[0]; B:= CurrentHash[1]; C:= CurrentHash[2]; D:= CurrentHash[3]; E:= CurrentHash[4];
 
+  {$WARNINGS OFF}
   Inc(E,((A shl 5) or (A shr 27)) + (D xor (B and (C xor D))) + $5A827999 + W[ 0]); B:= (B shl 30) or (B shr 2);
   Inc(D,((E shl 5) or (E shr 27)) + (C xor (A and (B xor C))) + $5A827999 + W[ 1]); A:= (A shl 30) or (A shr 2);
   Inc(C,((D shl 5) or (D shr 27)) + (B xor (E and (A xor B))) + $5A827999 + W[ 2]); E:= (E shl 30) or (E shr 2);
@@ -150,7 +151,7 @@ begin
   Inc(C,((D shl 5) or (D shr 27)) + (E xor A xor B) + $CA62C1D6 + W[77]); E:= (E shl 30) or (E shr 2);
   Inc(B,((C shl 5) or (C shr 27)) + (D xor E xor A) + $CA62C1D6 + W[78]); D:= (D shl 30) or (D shr 2);
   Inc(A,((B shl 5) or (B shr 27)) + (C xor D xor E) + $CA62C1D6 + W[79]); C:= (C shl 30) or (C shr 2);
-
+  {$WARNINGS ON}
   CurrentHash[0]:= CurrentHash[0] + A;
   CurrentHash[1]:= CurrentHash[1] + B;
   CurrentHash[2]:= CurrentHash[2] + C;
@@ -200,11 +201,13 @@ end;
 procedure TDCP_sha1.Init;
 begin
   Burn;
+  {$WARNINGS OFF}
   CurrentHash[0]:= $67452301;
   CurrentHash[1]:= $EFCDAB89;
   CurrentHash[2]:= $98BADCFE;
   CurrentHash[3]:= $10325476;
   CurrentHash[4]:= $C3D2E1F0;
+  {$WARNINGS ON}
   fInitialized:= true;
 end;
 

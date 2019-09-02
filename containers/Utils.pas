@@ -778,11 +778,13 @@ procedure AssertIsNotReadonly(const fname: string);
 var
   attr: Integer;
 begin
+  {$WARNINGS OFF}
   if FileExists(fname) then begin
     attr := FileGetAttr(fname);
     if (attr and faReadOnly) <> 0 then
       FileSetAttr(fname, attr xor faReadOnly);
   end; { If }
+  {$WARNINGS ON}
 end; { AssertIsNotReadonly }
 
 {+------------------------------------------------------------

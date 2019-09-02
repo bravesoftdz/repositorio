@@ -146,7 +146,7 @@ begin
           {$IFDEF VER150}
             SetString(Result, StrRet.cStr, lStrLen(StrRet.cStr));
           {$ELSE}
-            SetString(Result, StrRet.cStr, StrLen(StrRet.cStr));
+            {$WARNINGS OFF} SetString(Result, StrRet.cStr, StrLen(StrRet.cStr)); {$WARNINGS ON}
           {$ENDIF}
         end;
         STRRET_OFFSET:
@@ -193,7 +193,10 @@ var
 begin
   pc := @theFileNameWithPath[0];
   lng := GetTempFileName(PChar(getWindowsTempPath), PChar(prefix), 0, pc);
+
+  {$WARNINGS OFF}
   Win32Check(lng <> 0);
+  {$WARNINGS ON}
   SetString(result, pc, strLen(pc));
   result := result;
 end;
