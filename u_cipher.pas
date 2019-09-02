@@ -110,7 +110,7 @@ procedure CifraArquivo(ArquivoIn, ArquivoOut : String;Senha:String);
 var
   Cipher: TDCP_IDEA;
   Input, Output: TFileStream;
-  Progress, Done: longint;
+  Done: longint;
   Header: packed record     { This is the header of the encrypted file }
     Id: longint;
     Check1, Check2: longint;
@@ -131,7 +131,6 @@ begin
     Input.Free;
     Exit;
   end;
-  Progress:= 0;     { Progress contains the total bytes done }
   Header.Id:= Cipher.Id;  { Store the cipher id so we know what algorithm to use
                             on decrypting }
   Header.Check1:= Random($FFFF) or (Random($FFFF) shl 16);
@@ -146,7 +145,6 @@ begin
   Output.Write(Header,Sizeof(Header));
   repeat
     Done:= Cipher.EncryptStream(Input,Output,32768);  { Encrypt the file 32768 bytes at a time }
-    Inc(Progress,Done);
   until Done<> 32768;
   Input.Free;   { Free all resources used }
   Output.Free;
@@ -159,7 +157,7 @@ procedure DecifraArquivo(ArquivoIn, ArquivoOut : String;Senha:String);
 var
   Cipher: TDCP_IDEA;
   Input, Output: TFileStream;
-  Progress, Done: longint;
+  Done: longint;
   Header : packed record
      Id  : longint;
      Check1, Check2: longint;
@@ -179,7 +177,6 @@ begin
   end;
   Input.Read(Header,Sizeof(Header));
   Cipher:= TDCP_IDEA.Create(Application);
-  Progress:= 0;
   Cipher.InitStr(Senha); { Initialize the cipher with the passphrase }
   if Cipher is TDCP_blockcipher then
     TDCP_blockcipher(Cipher).CipherMode:= cmCFBblock; { Set the mode }
@@ -196,7 +193,6 @@ begin
   end;
   repeat
     Done:= Cipher.DecryptStream(Input,Output,32768);  { Decrypt the file }
-    Inc(Progress,Done);
 //    DecProgressBar.Position:= (Progress*100) div Input.Size;
   until Done<> 32768;
   Input.Free;

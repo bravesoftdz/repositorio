@@ -66,6 +66,7 @@ begin
   C:= CurrentHash[2];
   D:= CurrentHash[3];
 
+  {$WARNINGS OFF}
   A:= B + LRot32(A + (D xor (B and (C xor D))) + Data[ 0] + $d76aa478,7);
   D:= A + LRot32(D + (C xor (A and (B xor C))) + Data[ 1] + $e8c7b756,12);
   C:= D + LRot32(C + (B xor (D and (A xor B))) + Data[ 2] + $242070db,17);
@@ -133,7 +134,7 @@ begin
   D:= A + LRot32(D + (B xor (A or (not C))) + Data[11] + $bd3af235,10);
   C:= D + LRot32(C + (A xor (D or (not B))) + Data[ 2] + $2ad7d2bb,15);
   B:= C + LRot32(B + (D xor (C or (not A))) + Data[ 9] + $eb86d391,21);
-
+  {$WARNINGS ON}
   Inc(CurrentHash[0],A);
   Inc(CurrentHash[1],B);
   Inc(CurrentHash[2],C);
@@ -183,10 +184,12 @@ end;
 procedure TDCP_md5.Init;
 begin
   Burn;
+  {$WARNINGS OFF}
   CurrentHash[0]:= $67452301;
   CurrentHash[1]:= $efcdab89;
   CurrentHash[2]:= $98badcfe;
   CurrentHash[3]:= $10325476;
+  {$WARNINGS ON}
   fInitialized:= true;
 end;
 

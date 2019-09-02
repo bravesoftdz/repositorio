@@ -33,7 +33,7 @@ type
   protected
     EK, DK: array[0..51] of word;
   public
-    class function GetID: longint; override;
+    class function GetId: longint; override;
     class function GetAlgorithm: string; override;
     class function GetMaxKeySize: longint; override;
     class function GetBlockSize: longint; override;
@@ -60,7 +60,7 @@ begin
   Result:= 64;
 end;
 
-class function TDCP_idea.GetID: longint;
+class function TDCP_idea.GetId: longint;
 begin
   Result:= DCP_idea;
 end;

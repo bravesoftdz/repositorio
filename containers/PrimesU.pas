@@ -101,7 +101,7 @@ constructor TSieveBuilderThread.Create;
 begin
   inherited Create( true );
   FreeOnTerminate := true;
-  Resume;
+  Execute;
 end;
 
 { Sieve of Erathostenes, implementation follows some Java code based on
