@@ -17,7 +17,7 @@ var
   LHandler: TIdSSLIOHandlerSocketOpenSSL;
 begin
   http := TIdHTTP.Create(nil);
-  LHandler := TIdSSLIOHandlerSocketOpenSSL.Create(Result);
+  LHandler := TIdSSLIOHandlerSocketOpenSSL.Create;
   http.IOHandler := LHandler;
   http.AllowCookies := True;
   http.HandleRedirects := True;
